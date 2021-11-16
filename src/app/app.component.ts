@@ -8,7 +8,6 @@ import { NotificationService, NotificationType } from './common-services';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Hola mundo';
 
   // constructor(private log: LoggerService) {
   //   log.error('Es un error');
