@@ -12,10 +12,10 @@ export class DemosComponent implements OnInit, OnDestroy {
 
   private nombre: string = 'Mundo';
   listado: Array<any> = [
-    {id: 1, nombre: 'Madrid'},
-    {id: 2, nombre: 'barcelona'},
-    {id: 3, nombre: 'SEVILLA'},
-    {id: 4, nombre: 'ciudad Real'},
+    { id: 1, nombre: 'Madrid' },
+    { id: 2, nombre: 'barcelona' },
+    { id: 3, nombre: 'SEVILLA' },
+    { id: 4, nombre: 'ciudad Real' },
   ];
   idProvincia = 2;
   fontSize = 24;
@@ -28,8 +28,8 @@ export class DemosComponent implements OnInit, OnDestroy {
 
   public get Nombre(): string { return this.nombre; }
   public set Nombre(value: string) {
-    if(value === this.nombre) return;
-      this.nombre = value;
+    if (value === this.nombre) return;
+    this.nombre = value.toUpperCase();
   }
 
   public saluda(): void {
