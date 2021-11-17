@@ -18,6 +18,7 @@ export class DemosComponent implements OnInit, OnDestroy {
     {id: 4, nombre: 'ciudad Real'},
   ];
   idProvincia = 2;
+  fontSize = 24;
 
   resultado: any = null;
   visible = true;
@@ -35,7 +36,7 @@ export class DemosComponent implements OnInit, OnDestroy {
     this.resultado = `Hola ${this.nombre}`;
   }
 
-  public despida(): void {
+  public despide(): void {
     this.resultado = `Adios ${this.nombre}`;
   }
 
