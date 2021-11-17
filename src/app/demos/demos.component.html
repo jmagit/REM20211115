@@ -34,7 +34,7 @@ Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos voluptates
   <input type="text" value="Tabarnia" #txtProvincia>
   <input type="button" value="añadir" (click)="add(txtProvincia.value)">
 </p>
-
+<my-sizer [(size)]="fontSize"></my-sizer>
 <my-sizer [(size)]="fontSize"></my-sizer>
 <p [style.font-size.px]="fontSize">
   {{listado | json}}
