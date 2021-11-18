@@ -79,8 +79,8 @@ export class CalculadoraComponent implements OnInit {
     } else if (this.miPantalla.indexOf('.') === -1) {
       this.miPantalla += '.';
     } else {
-      this.notify.add('Ya está la coma', NotificationType.warn)
-      // this.log.warn('Ya está la coma');
+      // this.notify.add('Ya está la coma', NotificationType.warn)
+      this.log.warn('Ya está la coma');
     }
   }
 
@@ -126,21 +126,21 @@ export class CalculadoraComponent implements OnInit {
     // Number: double-precision IEEE 754 floating point.
     // 9.9 + 1.3, 0.1 + 0.2, 1.0 - 0.9
     this.miPantalla = parseFloat(this.acumulado.toPrecision(15)).toString();
-    // miPantalla = acumulado.toString();
+    // this.miPantalla = this.acumulado.toString();
     this.updated.emit(this.acumulado);
     this.operador = value;
     this.limpiar = true;
   };
 
   ngOnInit(): void {
-    if (this.init) {
-      this.ponOperando(this.init);
-    }
+    // if (this.init) {
+    //   this.ponOperando(this.init);
+    // }
   }
   ngOnChanges(changes: SimpleChanges): void {
-    // if (this.init) {
-    //   this.ponOperando(this.init.toString());
-    // }
+    if (this.init) {
+      this.ponOperando(this.init.toString());
+    }
   }
 
 }
