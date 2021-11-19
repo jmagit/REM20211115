@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
   selector: 'app-form-buttons',
   templateUrl: './form-buttons.component.html',
-  styleUrls: ['./form-buttons.component.scss']
+  styleUrls: ['./form-buttons.component.css']
 })
 export class FormButtonsComponent {
   @Input('send-disabled') sendDisabled: boolean | null = false;
@@ -11,8 +11,8 @@ export class FormButtonsComponent {
   @Output() cancel: EventEmitter<any> = new EventEmitter<any>();
   @Output() delete: EventEmitter<any> = new EventEmitter<any>();
 
-  get hasSend(): boolean { return this.send.observers.length > 0; }
-  get hasCancel(): boolean { return this.cancel.observers.length > 0; }
-  get hasDelete(): boolean { return this.delete.observers.length > 0; }
+  get hasSend(): boolean { return this.send.observed; }
+  get hasCancel(): boolean { return this.cancel.observed; }
+  get hasDelete(): boolean { return this.delete.observed; }
 }
 

@@ -1,7 +1,7 @@
-import { Injectable, Optional } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { HttpClient, HttpErrorResponse, HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse, HttpContextToken } from '@angular/common/http';
-import { catchError, Observable } from 'rxjs';
+import { HttpClient, HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpContextToken } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 export const AUTH_REQUIRED = new HttpContextToken<boolean>(() => false);
@@ -58,17 +58,15 @@ export class LoginService {
   login(usr: string, pwd: string) {
     return new Observable(observable =>
       this.http.post<LoginResponse>(environment.securityApiURL + 'login', { name: usr, password: pwd })
-        .pipe(
-          catchError((err, caught) => { observable.error(err); return caught; })
-        )
-        .subscribe(
-          data => {
+        .subscribe({
+          next: data => {
             if (data.success === true) {
               this.auth.login(data.token ?? '', data.name ?? '');
             }
             observable.next(this.auth.isAutenticated);
-          }
-        )
+          },
+          error: err => observable.error(err)
+       })
     );
   }
   logout() {

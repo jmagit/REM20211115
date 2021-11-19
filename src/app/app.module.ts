@@ -19,6 +19,7 @@ import { DinamicoComponent } from './dinamico/dinamico.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { FormularioComponent } from './formulario/formulario.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonComponentModule } from './common-component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule, FormsModule, HttpClientModule,
-    MainModule, SecurityModule, MyCoreModule, CommonServicesModule,
+    MainModule, SecurityModule, MyCoreModule, CommonServicesModule, CommonComponentModule,
     AppRoutingModule,
   ],
   providers: [
