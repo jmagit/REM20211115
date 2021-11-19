@@ -26,7 +26,9 @@
       <label class="form-label" for="nombre">Nombre:</label>
       <input class="form-control" [class.is-invalid]="nombre.invalid" type="text" name="nombre" id="nombre"
         [(ngModel)]="VM.Elemento.nombre" #nombre="ngModel" required minlength="2" maxlength="50">
-      <app-show-errors-messages [errors]="nombre.errors"></app-show-errors-messages>
+      <div class="invalid-feedback" [hidden]="!nombre.hasError('required')">Es obligatorio</div>
+      <div class="invalid-feedback" [hidden]="!nombre.hasError('minlength') && !nombre.hasError('maxlength')">
+        Debe tener entre 2 y 10 letras</div>
     </div>
     <div class="form-group col-md-4">
       <label class="form-label" for="apellidos">Apellidos:</label>

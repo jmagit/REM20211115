@@ -8,12 +8,13 @@ import { ModoCRUD } from '../base-code/tipos';
 import { NavigationService, NotificationService } from '../common-services';
 import { AuthService, AUTH_REQUIRED } from '../security';
 
+
 @Injectable({
   providedIn: 'root'
 })
-export class BlogDAOService extends RESTDAOService<any, any> {
+export class LibrosDAOService extends RESTDAOService<any, any> {
   constructor(http: HttpClient) {
-    super(http, 'blog', { context: new HttpContext().set(AUTH_REQUIRED, true) });
+    super(http, 'libros', { context: new HttpContext().set(AUTH_REQUIRED, true) });
   }
   page(page: number, rows: number = 20): Observable<{ page: number, pages: number, rows: number, list: Array<any> }> {
     return new Observable(subscriber => {
@@ -36,16 +37,16 @@ export class BlogDAOService extends RESTDAOService<any, any> {
 @Injectable({
   providedIn: 'root'
 })
-export class BlogViewModelService {
+export class LibrosViewModelService {
   protected modo: ModoCRUD = 'list';
   protected listado: Array<any> = [];
   protected elemento: any = {};
   protected idOriginal: any = null;
-  protected listURL = '/blog';
+  protected listURL = '/libros';
 
   constructor(protected notify: NotificationService, public auth: AuthService,
     protected out: LoggerService, private navigation: NavigationService,
-    protected dao: BlogDAOService, protected router: Router) { }
+    protected dao: LibrosDAOService, protected router: Router) { }
 
   public get Modo(): ModoCRUD { return this.modo; }
   public get Listado(): Array<any> { return this.listado; }
@@ -97,9 +98,9 @@ export class BlogViewModelService {
     this.elemento = {};
     this.idOriginal = null;
     // this.list();
-    this.router.navigateByUrl(this.listURL);
+    // this.router.navigateByUrl(this.listURL);
     // this.load(this.page)
-    // this.navigation.back()
+    this.navigation.back()
   }
 
   public send(): void {

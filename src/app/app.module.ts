@@ -23,6 +23,7 @@ import { CommonComponentModule } from './common-component';
 import { AjaxWaitInterceptor } from './main/ajax-wait';
 import { ContactosModule } from './contactos';
 import { BlogModule } from './blog';
+import { LibrosModule } from './libros';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { BlogModule } from './blog';
   imports: [
     BrowserModule, FormsModule, HttpClientModule,
     MainModule, SecurityModule, MyCoreModule, CommonServicesModule, CommonComponentModule,
-    AppRoutingModule, ContactosModule, BlogModule,
+    AppRoutingModule, ContactosModule, BlogModule, LibrosModule,
   ],
   providers: [
     LoggerService,
